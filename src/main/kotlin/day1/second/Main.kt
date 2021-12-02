@@ -1,14 +1,16 @@
 package day1.second
 
-import day1getData
+import DAY_1
+import getStringsInput
+import inputPath
 
 fun main() {
-    println(day1getData().countIncreasesWindows())
+    println(getStringsInput(DAY_1.inputPath).countIncreasesWindows())
 }
 
-private fun List<Int>.countIncreasesWindows(): Int {
+private fun List<String>.countIncreasesWindows(): Int {
     var prevSum = Int.MAX_VALUE
-    return asSequence().countIndexed { idx, it ->
+    return asSequence().map { it.toInt() }.countIndexed { idx, it ->
         val newSum = sumN(idx)
         (newSum > prevSum).apply { prevSum = newSum }
     }
@@ -20,7 +22,7 @@ private inline fun Sequence<Int>.countIndexed(predicate: (Int, Int) -> Boolean):
     return count
 }
 
-private fun List<Int>.sumN(start: Int, n: Int = 3): Int {
+private fun List<String>.sumN(start: Int, n: Int = 3): Int {
     if (start + n > size) return Int.MIN_VALUE
-    return subList(start, start + n).sum()
+    return subList(start, start + n).map { it.toInt() }.sum()
 }

@@ -1,13 +1,15 @@
 package day1.first
 
-import day1getData
+import DAY_1
+import getStringsInput
+import inputPath
 
 fun main() {
-    val data = day1getData()
+    val data = getStringsInput(DAY_1.inputPath).asSequence()
     println(data.countIncreases())
 }
 
-private fun List<Int>.countIncreases(): Int {
-    var prev = get(0)
-    return asSequence().drop(1).count { (it > prev).apply { prev = it } }
+private fun Sequence<String>.countIncreases(): Int {
+    var prev = this.first().toInt()
+    return map { it.toInt() }.count { (it > prev).apply { prev = it } }
 }
