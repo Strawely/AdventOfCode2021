@@ -1,2 +1,10 @@
 const val DAY_1 = 1
 const val DAY_2 = 2
+const val DAY_3 = 3
+const val DAY_4 = 4
+const val DAY_5 = 5
+const val DAY_6 = 6
+const val DAY_7 = 7
+const val DAY_8 = 8
+const val DAY_9 = 9
+const val DAY_10 = 10
